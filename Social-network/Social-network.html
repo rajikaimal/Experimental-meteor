@@ -1,0 +1,51 @@
+<head>
+  <title>Social-network</title>
+</head>
+
+<body>
+
+</body>
+
+<template name="register">
+  <h2> Register </h2>
+</template>
+
+<template name="login">
+  <h2> Login </h2>
+</template>
+
+<template name="home">
+  <h2> Welcome </h2>
+</template>
+
+<template name="main">
+	<div class="container">
+	    <h1>Social-network</h1>
+	    <div class="container">
+	    	<div class="col-lg-12">
+	    		{{> loginButtons}}
+	    	</div>
+	    </div>
+	    <div class="container">
+	    {{> navigation }}
+	    </div>
+	    {{> yield }}
+	    {{#if currentUser}}
+	    {{> profile}}
+	    {{/if}}
+	    <hr />
+	    <p>Copyright &copy;  2015. just some tests with Meteor</p>
+    </div>
+</template>
+
+<template name="navigation">
+  <div class="container">
+  <a href="{{pathFor route='home'}}">Home</a>
+  <a href="{{pathFor route='login'}}">Login</a>
+  <a href="{{pathFor route='register'}}">Register</a>
+  </div>
+</template>
+
+<template name="profile">
+	My Profile
+</template>
