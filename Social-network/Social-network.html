@@ -32,6 +32,7 @@
 	    {{> yield }}
 	    {{#if currentUser}}
 	    {{> profile}}
+
 	    {{/if}}
 	    <hr />
 	    <p>Copyright &copy;  2015. just some tests with Meteor</p>
@@ -48,4 +49,19 @@
 
 <template name="profile">
 	My Profile
+
+	{{#if currentUser}}
+	  	<a href="{{pathFor route='settings'}}">Settings</a>
+  	{{/if}}
+</template>
+
+<template name="settings">
+	<div class="container">
+	{{ userInfo.age }}
+		<form class="settings-form">
+			<label>Age</label><input type="text" name="age" placeholder="{{ userInfo.age }}">
+			<label>Hobby</label><input type="text" name="hobby" placeholder="{{ userInfo.hobby }}">
+			<input type="submit">
+		</form>
+	</div>
 </template>
