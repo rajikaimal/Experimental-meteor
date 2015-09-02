@@ -6,17 +6,8 @@
 
 </body>
 
-<template name="register">
-  <h2> Register </h2>
-</template>
 
-<template name="login">
-  <h2> Login </h2>
-</template>
 
-<template name="home">
-  <h2> Welcome </h2>
-</template>
 
 <template name="main">
 	<div class="container">
@@ -30,38 +21,51 @@
 	    {{> navigation }}
 	    </div>
 	    {{> yield }}
-	    {{#if currentUser}}
-	    {{> profile}}
-
-	    {{/if}}
+	    
+	    {{>newsFeed }}
 	    <hr />
 	    <p>Copyright &copy;  2015. just some tests with Meteor</p>
+
     </div>
 </template>
 
 <template name="navigation">
   <div class="container">
+  {{#if currentUser}}
   <a href="{{pathFor route='home'}}">Home</a>
-  <a href="{{pathFor route='login'}}">Login</a>
-  <a href="{{pathFor route='register'}}">Register</a>
+  <a href="{{pathFor route='settings'}}">Settings</a>
+  {{/if}}
   </div>
 </template>
 
-<template name="profile">
-	My Profile
-
-	{{#if currentUser}}
-	  	<a href="{{pathFor route='settings'}}">Settings</a>
-  	{{/if}}
-</template>
 
 <template name="settings">
 	<div class="container">
-	{{ userInfo.age }}
 		<form class="settings-form">
 			<label>Age</label><input type="text" name="age" placeholder="{{ userInfo.age }}">
 			<label>Hobby</label><input type="text" name="hobby" placeholder="{{ userInfo.hobby }}">
 			<input type="submit">
 		</form>
 	</div>
+</template>
+
+<template name="home">
+	News Feed	
+	<label>In a good Mood ? Post something maybe ?</label><br/>
+	<form class="posttowall">
+		<input text="text" placeholder="update status" name="posting">
+		<input type="submit" value="Post">
+	</form>
+</template>
+
+<template name="newsFeed">
+	<ul>
+	{{#each feed}}
+
+		<li>
+		{{ post }} <button class="removePost">Remove</button>
+		</li>
+
+	{{/each}}
+	</ul>
 </template>
