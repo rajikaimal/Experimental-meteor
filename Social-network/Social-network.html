@@ -59,13 +59,15 @@
 </template>
 
 <template name="newsFeed">
+	<div class="col-lg-8">
 	<ul>
-	{{#each feed}}
+		{{#each feed}}
 
-		<li>
-		{{ post }} <button class="removePost">Remove</button>
-		</li>
+			<li>
+			{{ post }} <button class="removePost">Remove</button>
+			</li>
 
-	{{/each}}
+		{{/each}}
 	</ul>
+	</div>
 </template>

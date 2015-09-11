@@ -17,6 +17,7 @@ if (Meteor.isClient) {
       event.preventDefault();
       var postWall = event.target.posting.value;
       Feed.insert({ postId : Meteor.userId() , post : postWall });
+      event.target.posting.value = "";
     }
   });
 
@@ -26,10 +27,15 @@ if (Meteor.isClient) {
     }
   });
 
+
   Template.newsFeed.events({
     'click .removePost' : function(event){
       Feed.remove(this._id);
     }
+    // 'click .updatePost' : function(event){
+    //   var updatedPost = event.target.updatePostText.value;
+    //   Feed.update({ postId : Meteor.userId() , { $set : { post : updatedPost } } })
+    // }
   });
 
   Template.settings.helpers({
